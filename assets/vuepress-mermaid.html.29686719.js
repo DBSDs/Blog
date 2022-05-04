@@ -1,1 +1,0 @@
-const e={key:"v-60987f28",path:"/Blog/vuepress-mermaid.html",title:"\u535A\u5BA2\u6D41\u7A0B\u56FE(\u7F16\u5199markdown-it\u63D2\u4EF6)",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:null,contributors:[]},filePathRelative:"Blog/vuepress-mermaid.md"};export{e as data};
