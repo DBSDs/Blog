@@ -9,10 +9,10 @@ const config = {
   title: `Op-chen'Blog`,
   tagline: 'Op-chen的个人主页',
   url: 'https://github.com/DBSDs',
-  baseUrl: '/blog/',
+  baseUrl: '/Blog/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: '/blog/img/avator.png',
+  favicon: '/Blog/img/avator.png',
 
   projectName: 'Blog', // Usually your repo name.
 
@@ -57,7 +57,7 @@ const config = {
         title: `Op-chen'Blog`,
         logo: {
           alt: 'My Site Logo',
-          src: '/blog/img/avator.png',
+          src: '/Blog/img/avator.png',
         },
         items: [{
             type: 'doc',
@@ -67,7 +67,7 @@ const config = {
           },
           {
             type: 'html',
-            value: `<img src='/blog/svg/github.svg' href="https://github.com/facebook/docusaurus" />`,
+            value: `<img src='/Blog/svg/github.svg' href="https://github.com/facebook/docusaurus" />`,
             position: 'right',
           },
         ],
