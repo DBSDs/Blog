@@ -203,4 +203,4 @@ export default defineUserConfig({
 ```
 
 ## docusaurus
-在 mermaid 中我推荐直接使用第三方插件 [mdx-mermaid](https://sjwall.github.io/mdx-mermaid/docs/intro/)
+在 docusaurus 中我推荐直接使用第三方插件 [mdx-mermaid](https://sjwall.github.io/mdx-mermaid/docs/intro/)
