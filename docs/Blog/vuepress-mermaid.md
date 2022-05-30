@@ -26,7 +26,7 @@ const plugins = (options?, ctx?) => {
 export default plugins;
 ```
 
-```jS
+```js
 // markdownItPlugin
 
 const { hash } = require("@vuepress/utils");
@@ -50,7 +50,8 @@ module.exports = function mermaidjsPlugin(md) {
 
 ```
 
-可以看到我们是通过extendsMarkdown中传出来的参数md来解析在md中的一些关键字，目前解析的肯定是```mermaid这样字样。\
+可以看到我们是通过extendsMarkdown中传出来的参数md来解析在md中的一些关键字，目前解析的肯定是```mermaid样字样。
+
 然后将我们需要的组件返回出来，这里我们需要引入mermaid来解析流程图了。
 
 ```js
