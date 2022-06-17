@@ -13,7 +13,6 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: '/Blog/img/avator.png',
-
   projectName: 'Blog', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -31,12 +30,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          remarkPlugins: [require('mdx-mermaid'), {
-            theme: {
-              light: 'neutral',
-              dark: 'forest'
-            }
-          }]
+          remarkPlugins: [require('mdx-mermaid'), ]
         },
         // blog: {
         //   showReadingTime: true,
@@ -44,7 +38,7 @@ const config = {
         //   editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         // },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.scss'),
         },
       }),
     ],
@@ -65,42 +59,32 @@ const config = {
             label: '博客',
           },
           {
-            type: 'html',
-            value: `<img src='/Blog/svg/github.svg' href="https://github.com/facebook/docusaurus" />`,
+            type: 'dropdown',
+            label: '工具箱',
+            position: 'left',
+            items: [{
+              label: 'Json格式',
+              href: 'https://dbsds.github.io/json-view-web/build/',
+            }, ],
+          },
+          {
+            type: 'localeDropdown',
             position: 'right',
+          },
+          {
+            href: 'https://github.com/DBSDs',
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub 仓库',
           },
         ],
       },
-      // footer: {
-      //   style: 'dark',
-      //   links: [{
-      //       title: '文章',
-      //       items: [{
-      //         label: '博客',
-      //         to: '/docs/blog',
-      //       }, ],
-      //     },
-      //     {
-      //       title: '社区',
-      //       items: [{
-      //         label: '掘金',
-      //         href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-      //       }, ],
-      //     },
-      //     {
-      //       title: '更多',
-      //       items: [{
-      //         label: 'GitHub',
-      //         href: 'https://github.com/DBSDs',
-      //       }, ],
-      //     },
-      //   ],
-      // },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
     }),
+  plugins: ['docusaurus-plugin-sass']
 };
 
 module.exports = config;

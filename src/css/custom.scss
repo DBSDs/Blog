@@ -29,6 +29,13 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-.navbar__item {
-  display: flex;
+
+.header-github-link {
+  height: 24px;
+  background: url("/static/svg/github.svg") no-repeat center;
+  margin: var(--ifm-navbar-item-padding-vertical) var(--ifm-navbar-item-padding-horizontal);
+
+  &:hover {
+    opacity: 0.6;
+  }
 }
