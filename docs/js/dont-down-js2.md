@@ -1,5 +1,6 @@
 ---
-sidebar_position: 56
+sidebar_position: 6
+draft: true
 ---
 # 你不知道的 Javascript（中）
 

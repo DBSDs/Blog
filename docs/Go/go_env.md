@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+draft: true
+
 ---
 
 # Go语言环境
