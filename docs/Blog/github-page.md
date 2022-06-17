@@ -83,7 +83,58 @@ export default defineUserConfig({
 });
 ```
 
+### 自动化部署(CI/CD)
 
+很简单，网站开发好了。由于是静态页面，那么每次只要我们在本地修改完源码然后再 build，然后把build的后的源码放到github pages上就可以
+
+可是好麻烦，自从使用过CI/CD后，一个没有自动化构建的项目是没有灵魂的！那就使用 github 的自动化流程就好了。
+
+在本地项目中新建.github/workflows 文件，创建 learn-github-actions.yml
+
+具体可以查看如何使用 github actions 官方文档
+
+这里附上我的配置，标注出了可能需要自己手动的配置的选项
+
+```yml
+name: Build and Deploy
+on: [push]
+jobs:
+  build:
+    runs-on: windows-latest # 本地使用的 windows 系统构建
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Install and Build 🔧 
+        run: |
+          npm ci
+          npm run build
+
+      - name: Upload Artifacts 🔺
+        uses: actions/upload-artifact@v1
+        with:
+          name: site
+          path: build # 构建后生成文件夹
+
+  deploy:
+    concurrency: ci-${{ github.ref }}
+    needs: [build] 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Download Artifacts 🔻 
+        uses: actions/download-artifact@v1
+        with:
+          name: site
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.3.2
+        with:
+          branch: gh-pages
+          folder: 'site' # The deployment folder should match the name of the artifact. Even though our project builds into the 'build' folder the artifact name of 'site' must be placed here.
+```
 ## 迁移至docusaurus
 
 因为个人原因，我将vuepress的博客迁移至docusaurus。
