@@ -63,9 +63,18 @@ const config = {
             label: '工具箱',
             position: 'left',
             items: [{
-              label: 'Json格式',
-              href: 'https://dbsds.github.io/json-view-web/build/',
-            }, ],
+                label: '时间戳工具',
+                to: '/Blog/tools/timestamp',
+              },
+              {
+                label: 'Base64加解密',
+                to: '/Blog/tools/base64compute',
+              },
+              {
+                label: 'Json格式',
+                href: 'https://dbsds.github.io/json-view-web/build/',
+              },
+            ],
           },
           {
             type: 'localeDropdown',

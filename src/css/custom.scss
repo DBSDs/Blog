@@ -32,10 +32,17 @@
 
 .header-github-link {
   height: 24px;
-  background: url("/static/svg/github.svg") no-repeat center;
+  background: url("/static/svg/github-white.svg") no-repeat center;
   margin: var(--ifm-navbar-item-padding-vertical) var(--ifm-navbar-item-padding-horizontal);
 
   &:hover {
     opacity: 0.6;
   }
+
+
+}
+
+[data-theme="dark"] .header-github-link {
+  background: url("/static/svg/github-drak.svg") no-repeat center;
+
 }

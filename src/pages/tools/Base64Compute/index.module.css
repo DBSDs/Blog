@@ -1,0 +1,44 @@
+.row {
+  display: flex;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ced4da;
+  padding: 20px;
+  border-radius: 0.3rem;
+  margin: 10px 20px;
+}
+
+.label {
+  width: 140px;
+}
+
+.button {
+  color: #fff;
+  background-color: #284a6c;
+  height: 30px;
+  border-color: #325d88;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+.textarea {
+  border: 1px solid #ced4da;
+  width: 100%;
+  font-size: 20px;
+  border-radius: 0.3rem;
+  resize: none;
+}
+
+[data-theme="dark"] .textarea {
+  border: 1px solid #242526;
+}
+
+[data-theme="dark"] .box {
+  border: 1px solid #242526;
+}
