@@ -67,7 +67,7 @@ const config = {
                 to: '/Blog/tools/timestamp',
               },
               {
-                label: 'Base64加解密',
+                label: 'Base64编解码',
                 to: '/Blog/tools/base64compute',
               },
               {

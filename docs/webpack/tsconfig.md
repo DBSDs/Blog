@@ -1,7 +1,6 @@
 ---
-sidebar_position: 3
+sidebar_position: 6
 draft: true
-
 ---
 
 # 在tsconfig中的配置及实践

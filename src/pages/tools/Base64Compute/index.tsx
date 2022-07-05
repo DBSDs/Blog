@@ -28,7 +28,7 @@ const Base64Compute = () => {
               setOut(window.btoa(code));
             }}
           >
-            加密
+            编码
           </button>
           <button
             className={styles.button}
@@ -36,7 +36,7 @@ const Base64Compute = () => {
               setOut(window.atob(code));
             }}
           >
-            解密
+            解码
           </button>
         </div>
         <div className={styles.row}>

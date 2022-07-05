@@ -14,7 +14,7 @@ const FeatureList = [
   },
   {
     title: "小工具",
-    Svg: require("@site/static/img/tools.svg").default,
+    Svg: require("@site/static/img/Tools.svg").default,
     description: (
       <>我将会将一些构建网站的常用小工具集成到我的博客上，以便使用...</>
     ),
