@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # transition、animation实现动画入门
 
 ## 前言 ##
