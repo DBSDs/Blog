@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8q
+sidebar_position: 8
 draft: true
 ---
 # 一看就懂的事件冒泡、事件捕获、事件委托
