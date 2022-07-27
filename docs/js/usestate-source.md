@@ -1,6 +1,5 @@
 ---
-sidebar_position: 2
-draft: true
+sidebar_position: 7
 ---
 
 
@@ -8,9 +7,39 @@ draft: true
 
 在我不算很长的```React```函数式编程中来看，从上手到现在也使用了不下千次的```useState```，可以说```useState```是我的代码的重要的构成部分，可能不了解本质也能进行日常的业务开发，但是每次遇到难以解决的```Bug```时我日常怀疑人生，因此我迫不及待的想要了解```useState```到底做了什么。
 
-正是由于```useState```对我来说一直是一个黑箱，而我每次在有限的资料中扫兴而归，这篇文章也是将我的一些迷惑解答出来，通过写文章的方式拨云揭雾搬的触碰```useState```的本质。
+## useState诞生背景
 
-## 返回值
+### 什么是Hooks
+
+* React一直倡导使用函数组件，但是有时候需要使用state或其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有
+* React hooks 允许你不编写class的情况下使用state以及其他的React特性
+
+### Hooks解决的问题
+
+1. 类组件的不足
+
+* 状态逻辑难复用，在组件之后复用状态逻辑很难，可能要用到render props或者 HOC，但无论是渲染属性还是高阶组件，都会在原先的组件外包裹一层父容器，导致层级冗余
+* 趋向复杂难以维护，在声明周期函数中混杂不相干的逻辑
+* this指向问题
+
+2. Hooks的优势
+
+* 能优化类组件的三大问题
+* 副作用的关注点分离：副作用指那些没有发生在数据向视图转换过程中的逻辑，如 ajax 请求、访问原生dom 元素、本地持久化缓存、绑定/解绑事件、添加订阅、设置定时器、记录日志等。以往这些副作用都是写在类组件生命周期函数中的。而 useEffect 在全部渲染完毕后才会执行，useLayoutEffect 会在浏览器 layout 之后，painting 之前执行。
+
+
+## useState的实践
+
+### 什么时候刷新
+
+与 class 组件中的 setState 方法不同，如果你修改状态的时候，传的状态值没有变化，则不重新渲染
+### 优化
+
+* 默认情况下，只要父组件的状态变了(不管子组件以来不依赖该状态，子组件也会重新渲染)
+* 一般的优化，使用useMemo
+* 更深入的优化，使用useCallBack
+
+### 返回值
 
 了解useState我们从最简单的返回值开始入手
 
@@ -30,51 +59,7 @@ const {data:stringData, setData:setStringData} = React.useState<number>(0)
 
 显示还是直接使用数组更方便，这是React团队在设计上的考量。
 
-## 时序一致
-
-在官网的介绍中，时序一致是被提到的。何谓时序一致，就是每次渲染的时候调用```useState```时的顺序应该是一样的，最常见的情况就是不能在条件判断语句后加入```useState```
-
-```tsx
-const app = () => {
-  // 常规错误1.在if语句中包裹useState
-  if(1 + 1 === 2) {
-    const [data, setData] = React.useState<number>(0);
-  }
-
-
-  // 常规错误1.在useState前返回函数式组件
-  if(2 + 2 === 4) {
-    return 
-  }
-
-  const [string, setString] = React.useState<number>(0);
-
-  return (
-    <div onClick={() => {
-      setData(data + 1);
-    }} />
-  )
-}
-```
-
-为什么每次渲染函数都必须要按照同样的顺序渲染出来```useState```呢？理解这个问题需要从最简单的```useState```函数入手。
-```tsx
-let x
-function useState(initialValue) {
-   x = x === undefined ? initialValue : x
-  function setX(newState) {
-    x = newState;
-    render(); // 去渲染新组件
-  }
-  return [x, setX];
-}
-
-```
-这样的```useState```可以简单地理解为可以做到赋值，刷新的作用。但是当在组件中调用多个```useState```这个方法的时候，显然一个```x```不够用了!
-
-这个时候React团队采用的做法是根据每个```useState```在组件中创建的顺序来进行一个标记，将```x```值给按照相同的顺序塞进一个数组，在取出的时候按照相同的顺序拿到正确的值。
-
-## 同步还是异步
+### 同步还是异步
 
 在使用的时候，遇到的最常见疑惑就是```useState```究竟是同步的还是异步的，这直接决定了我们是否可以这个业务场景下使用它来存储数据，或者它是否能正确地重新渲染组件呈现出正确的数据。
 
@@ -122,7 +107,7 @@ const app = () => {
 
 可以很清楚地知道，两次打印均是0，如果在同步的情况下，那么两次的```force```打印出来的情况将会不一致，事实证明```useState```在不论什么情况下均是```异步```
 
-## 合并
+### 合并
 
 众所周知，每一次使用```useState```下的第二个返回值，也就是下面的```setXXX```，那么```React```的函数式组件就会重新刷新一次。
 
@@ -145,6 +130,8 @@ const app = () => {
 
 // 2 'string'
 ```
+
+可以看到上述例子中，app仅渲染一次，两个同样的```setState```函数仅仅只有第二个生效。
 
 但是在```setTimout```或者```promise```等回调函数中，显然并不存在合并现象了，在一次```onClick```事件中刷新组件状态，可以看到多次打印出刷新值。
 
@@ -171,14 +158,103 @@ const app = () => {
 
 这个现象主要是由于```React```团队的操作，它们在```React```的jsx中对所有的onClick或者onChange事件进行了一个接管的操作，使其所有state在这些事件内有合并现象，而在其他回调中可以说是脱离了**接管**，因此没有任何合并的现象
 
+
+### 时序一致
+
+在官网的介绍中，时序一致是被提到的。何谓时序一致，就是每次渲染的时候调用```useState```时的顺序应该是一样的，最常见的情况就是不能在条件判断语句后加入```useState```
+
+```tsx
+const app = () => {
+  // 常规错误1.在if语句中包裹useState
+  if(1 + 1 === 2) {
+    const [data, setData] = React.useState<number>(0);
+  }
+
+
+  // 常规错误1.在useState前返回函数式组件
+  if(2 + 2 === 4) {
+    return 
+  }
+
+  const [string, setString] = React.useState<number>(0);
+
+  return (
+    <div onClick={() => {
+      setData(data + 1);
+    }} />
+  )
+}
+```
+
+为什么每次渲染函数都必须要按照同样的顺序渲染出来```useState```呢？理解这个问题需要从最简单的```useState```函数入手。
+```tsx
+let x
+function useState(initialValue) {
+   x = x === undefined ? initialValue : x
+  function setX(newState) {
+    x = newState;
+    render(); // 去渲染新组件
+  }
+  return [x, setX];
+}
+
+```
+这样的```useState```可以简单地理解为可以做到赋值，刷新的作用。但是当在组件中调用多个```useState```这个方法的时候，显然一个```x```不够用了!
+
+这个时候React团队采用的做法是根据每个```useState```在组件中创建的顺序来进行一个标记，将```x```值给按照相同的顺序做一个环形链表，在取出的时候按照相同的顺序拿到正确的值。
+
+
 ## 源码解析
 目前 React 构架可以分为三层
+
+```js
+import React from 'react'
+import ReactDom from 'react-dom'
+
+let firstWorkInProgressHook = {
+  memoizedState: null,
+  next: null
+};
+let workInProgressHook;
+
+function useState(initState) {
+  let currentHook = workInProgressHook.next ? workInProgressHook.next : {
+    memoizedState: null,
+    next: null
+  };
+
+  function setState(newState) {
+    currentHook.memoizedState = newState;
+    render()
+  }
+
+  // 这就是为什么 useState 书写顺序很重要的原因，因为是用链表来存储的
+  if (workInProgressHook.next) {
+    workInProgressHook.next
+  } else {
+    // 只有在初始化的时候才会进入
+    workInProgressHook.next = currentHook;
+    // 将 workInProgressHook 指向 {}
+    workInProgressHook = currentHook;
+  }
+
+
+  return [currentHook.memoizedState, setState]
+}
+
+function render() {
+  // 每次重新渲染的时候，都将 workInProgressHook 指向 firstWorkInProgressHook
+  workInProgressHook = firstWorkInProgressHook;
+  ReactDOM.render( < Counter / > , document.getElementById('root'));
+}
+```
+
 
 * Scheduler（调度器） ———— 调度任务的优先级
 * Reconciler（协调器）———— 负责找出变化的组件
 * Renderer（渲染器）———— 负责将变化的组件渲染到页面上
 
-我们这里模仿 useState 写出以下代码
+我们这里模仿```useState```写出以下代码
 
 ```js
 function useState(initialState) {

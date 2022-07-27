@@ -1,0 +1,86 @@
+---
+sidebar_position: 8
+---
+
+# js中判断值的类型
+
+## typeof操作符
+
+关于```tpyeof```操作符，我们只能获是那种操作数的类型
+```js
+typeof undefined; // undefined
+typeof []; // object;
+typeof '123' // string
+```
+关于```typeof```操作符，我们需要记住两点，第一点：当操作数为```null```时。
+
+```js
+typeof null; // object 
+```
+
+第二点：当操作数为原始类型(```Primitive```)时很有效，但是对于对象具体类型的判断往往并不是我们需要的结果。
+> Tip: 6大原始类型Null、Undefined、String、Number、Boolean和Symbol。
+
+
+## instanceof
+
+```instanceof```操作符主要用来检查构造函数的原型是否在对象的原型链上。
+
+```js
+const s = new String()
+
+s instanceof String; // true
+s instanceof Object; // true
+```
+
+接下来让我们搞点事情
+```js
+s.__protp__ = Object.prototype
+
+s instanceof String; // false
+s instanceof Obejct; // true
+```
+
+利用```instanceof```操作符，我们可以对自定义的对象进行判断
+
+```js
+function Animal(name) {
+  this.name = name
+}
+
+const fizz = new Animal('fizz')
+
+fizz instanceof Animal // true
+```
+
+## constructor属性
+
+实际上我们也可以通过```constructor```属性来达到类型判断的效果
+```js
+fizz.constructor === Animal // true
+```
+但是在实际情况下，```constructor```属性可以被随意修改，而且在原型继承中，很容易忽略掉```constructor```的正确指向:
+```js
+function Rabbit(name) {
+  Animal.call(this, name)
+}
+
+```
+
+## toString方法
+
+利用```toString```方法基本上可以解决所有内置对象类型的判断：
+```js
+function type(obj) {
+  return Relect.apply(Object.prototype.toString, obj, []).replace(/^\[object\s(\w+)\]$/, '$1').toLowerCase()
+}
+
+type(new String('123'))
+```
+
+## 内置Symbol接口
+
+```js
+Animal.prototype[Symbol.toStringTag] = 'Animal'
+type(rabbit) // animal
+```
