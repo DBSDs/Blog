@@ -181,3 +181,17 @@ const convertTime = (timestamp) => {
 }
 
 module.exports = computedTime
+```
+
+## 手写防抖、节流
+
+```js
+const debounce = (fn, time) => {
+
+  setTimeout(() => {
+
+  },time)
+  return 
+}
+
+```
