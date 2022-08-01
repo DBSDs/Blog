@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# ehco "is running type-checks..."
+
+# tsc --noEmit
+
+npm run pre-commit
