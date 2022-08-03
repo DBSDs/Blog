@@ -181,3 +181,41 @@ const convertTime = (timestamp) => {
 }
 
 module.exports = computedTime
+```
+
+## 防抖
+
+应用场景：一个搜索输入框，用户不停的进行输入（这个时候就是抖动的过程），等用户输入停止之后，再触发搜索
+
+```js
+function debounce(fn, delay = 200) {
+  let timer = 0;
+  return function () {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
+      timer = 0
+    }, delay)
+  }
+}
+```
+
+## 节流
+
+应用场景：滚动条事件输出降低灵敏度
+```js
+function throttle(fn, delay = 200) {
+  let timer = 0
+  return function () {
+    if (timer) {
+      return
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
+      timer = 0
+    }, delay)
+  }
+}
+```
