@@ -19,6 +19,14 @@ typeof null; // object
 ```
 
 第二点：当操作数为原始类型(```Primitive```)时很有效，但是对于对象具体类型的判断往往并不是我们需要的结果。
+`ECMAScript`有以下七种类型
+* undefined
+* boolean
+* string
+* obejct
+* number
+* function
+* symbol
 > Tip: 6大原始类型Null、Undefined、String、Number、Boolean和Symbol。
 
 
