@@ -1,6 +1,5 @@
 ---
 sidebar_position: 3
-draft: true
 ---
 
 # 在tsconfig中的配置及实践
