@@ -10,7 +10,7 @@ const FeatureList = [
     description: (
       <>欢迎来到我的博客，这是一个无人知晓的角落。该博客还正在持续更新中...</>
     ),
-    href: "/Blog/docs/intro",
+    href: "/docs/intro",
   },
   {
     title: "小工具",

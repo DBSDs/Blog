@@ -8,11 +8,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: `Op-chen'Blog`,
   tagline: 'Op-chen的个人主页',
-  url: 'https://github.com/DBSDs',
-  baseUrl: '/Blog/',
+  url: 'https://blog-jade-five-78.vercel.app',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: '/Blog/img/avator.png',
+  favicon: '/img/avator.png',
   projectName: 'Blog', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -50,7 +50,7 @@ const config = {
         title: `Op-chen'Blog`,
         logo: {
           alt: 'My Site Logo',
-          src: '/Blog/img/avator.png',
+          src: '/img/avator.png',
         },
         items: [{
             type: 'doc',
@@ -64,11 +64,11 @@ const config = {
             position: 'left',
             items: [{
                 label: '时间戳工具',
-                to: '/Blog/tools/timestamp',
+                to: '/tools/timestamp',
               },
               {
                 label: 'Base64编解码',
-                to: '/Blog/tools/base64compute',
+                to: '/tools/base64compute',
               },
               {
                 label: 'Json格式',

@@ -1,7 +1,8 @@
-
 ---
 sidebar_position: 8
+
 ---
+# React Rerender的一些知识
 
 来源[Why React Re-Renders](https://www.joshwcomeau.com/react/why-react-re-renders/)
 
