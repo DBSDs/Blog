@@ -3,7 +3,7 @@ sidebar_position: 2
 
 ---
 
-# TS泛型体操
+# TS泛型
 
 ## 泛型是什么
 

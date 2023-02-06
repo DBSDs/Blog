@@ -2,30 +2,23 @@
 sidebar_position: 8
 
 ---
-# React Rerender的一些知识
+# React Rerender的时机
 
-来源[Why React Re-Renders](https://www.joshwcomeau.com/react/why-react-re-renders/)
+来源：[Why React Re-Renders](https://www.joshwcomeau.com/react/why-react-re-renders/)
 
-
-# 为什么react会rerender
-
-说实话，我使用react也有一年多了，也没有理解`React`的rerender机制究竟是怎么运作的。
-
-这会导致我们在编码中遇到许多不确定性。如果我们不能理解`react`的渲染循环是这么运作的，那么我们怎么理解什么时候去使用react.memo和useCallback呢？
-
-在这篇文章中我将用一些例子去模拟react的渲染，我们同时会学到一些特殊的`rerender`的例子。
-
-> 目标受众
-> 已经会使用react进行编码的初中级工程师，探究熟悉react。
-
+说实话，当我们日常工作中不理理解 React 的rerender 机制究竟是怎么运作的话，这会导致我们在编码中遇到许多不确定性。
 
 ## React的核心循环(The core React loop)
 
-众所周知，所有react中的rerender起源于状态的变化。这是react组件rerender的唯一触发器。过去可能还有`forceUpdate`方法可以触发rerender，不过这个方法已经不复存在了。
+众所周知，所有 React 中的 Rerender 起源于状态的变化，过去可能还有`forceUpdate`方法可以触发rerender，不过这个方法已经不复存在了。
 
-不过这个说法好像有问题，如果rerender仅存在于props的变化，那么context呢？
+不过这个说法好像有问题，如果 rerender 仅存在于 props 的变化，那么 context 呢？
 
-那么这里还有一个条件，就是当react组件渲染的同时，他会把子组件全部更新。
+那么这里还有一个条件，就是当 react 组件渲染的同时，他会把子组件全部更新。
+
+因此 React 有两个 rerender 的时机：
+* 组件内状态的变化
+* 上层组件的刷新
 
 可以看下面这个例子：
 
@@ -117,9 +110,9 @@ react 重新运行Counter和BigCountNumber组件的代码，然后生成我们�
   <p>Copyright 2022 Big Count Inc.</p>
 </footer>
 ```
-每次渲染都有一个dom树快照，显示了Ui需要如何展示。
+每次渲染都有一个dom树快照，显示了UI需要如何展示。
 
 react使用一种找不同的方式去在两个快照中理清到底什么改变了。在这个情况下，看起来就一个textnode从0变成了1，然后编辑这个节点使他从0变成1。这个事情完美的结束了，react队列等待下次改变。
 
-这就是react的核心循环
+这就是react的核心循环。
 

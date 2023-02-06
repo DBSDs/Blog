@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 11
 ---
 # 一看就懂的事件冒泡、事件捕获、事件委托
 
