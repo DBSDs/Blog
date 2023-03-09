@@ -2,7 +2,7 @@
 sidebar_position: 12
 ---
 
-# js中判断值的类型
+# Js中判断值的类型
 
 ## typeof操作符
 

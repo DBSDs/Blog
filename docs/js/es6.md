@@ -1,0 +1,33 @@
+---
+sidebar_position: 20
+
+---
+
+# 你知道那些ES6语法?
+
+## 1.let 和 const 
+
+引入了块级作用域
+
+## 2.数组方法
+
+map、forEach、filter、some、every
+
+## 3.迭代器和生成器
+
+[iterator]
+
+## 4.类
+
+## 5.代理和反射
+
+## 6.函数
+
+* 新增箭头函数
+* 函数默认值
+* 扩展操作符
+* (es5中存在this和arguments) es6新增new.target属性
+
+
+## 7.期约Promise
+

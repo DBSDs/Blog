@@ -1,5 +1,6 @@
 ---
 sidebar_position: 11
+
 ---
 
 # mvvm是什么
@@ -51,4 +52,4 @@ vm 通过视图绑定数据
 vm 通过数据绑定视图
 setState => render() => vdom 的对比 ？ => 将新树替换旧树在页面上
 
-> 有一种说法是```React```并不是```MVVM```框架而是```MVC```框架
+> 有一种说法是 `React` 并不是 `MVVM` 框架而是 `MVC` 框架 
