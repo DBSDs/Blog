@@ -1,0 +1,8 @@
+{
+  "label": "书籍摘抄",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "书籍摘抄"
+  }
+}

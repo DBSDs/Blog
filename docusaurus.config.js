@@ -71,6 +71,10 @@ const config = {
                 to: '/tools/base64compute',
               },
               {
+                label: '三维地球',
+                to: '/tools/earth',
+              },
+              {
                 label: 'Json格式',
                 href: 'https://dbsds.github.io/json-view-web/build/',
               },

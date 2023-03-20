@@ -7,9 +7,7 @@ const FeatureList = [
   {
     title: "博客",
     Svg: require("@site/static/img/blog.svg").default,
-    description: (
-      <>欢迎来到我的博客，这是一个无人知晓的角落。该博客还正在持续更新中...</>
-    ),
+    description: <>欢迎来到我的博客，该博客还正在持续更新中...</>,
     href: "/docs/intro",
   },
   {

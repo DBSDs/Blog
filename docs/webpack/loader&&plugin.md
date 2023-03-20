@@ -3,7 +3,7 @@ sidebar_position: 4
 draft: true
 ---
 
-# 一看就会的webpack loader及plugin详解
+# Loader及Plugin详解
 
 在webpack中，loader和plugin是极其重要的。面试时也是面试官非常喜欢问到的。这里把loader和plugin全面详解，争取做到**吊打面试官**。
 

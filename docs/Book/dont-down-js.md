@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 1
 ---
 
 # 你不知道的 Javascript（上）
