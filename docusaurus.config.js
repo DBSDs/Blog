@@ -101,9 +101,9 @@ const config = {
         appId: 'TS23858RNP',
 
         //  公开 API 密钥：提交它没有危险
-        apiKey: '444ea1b80167f70961e9de833d2b8aba',
+        apiKey: '649cdab6bb34cb22dbe8e4d40d36823e',
 
-        indexName: '7dcbc225e20695ef3801b15382b16a73',
+        indexName: 'jade-five-78',
 
         // 可选：见下文
         contextualSearch: true,
