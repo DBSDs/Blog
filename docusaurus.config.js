@@ -111,11 +111,11 @@ const config = {
         // 可选：声明哪些域名需要用 window.location 型的导航而不是 history.push。 适用于 Algolia 配置会爬取多个文档站点，而我们想要用 window.location.href 在它们之间跳转时。
         externalUrlRegex: 'external\\.com|domain\\.com',
 
-        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-        replaceSearchResultPathname: {
-          from: '/docs/', // or as RegExp: /\/docs\//
-          to: '/',
-        },
+        // // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+        // replaceSearchResultPathname: {
+        //   from: '/docs/', // or as RegExp: /\/docs\//
+        //   to: '/',
+        // },
 
         // Optional: Algolia search parameters
         searchParameters: {},
