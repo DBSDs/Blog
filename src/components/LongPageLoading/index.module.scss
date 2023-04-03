@@ -1,0 +1,31 @@
+
+
+  .wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 528px;
+    overflow: hidden;
+
+  }
+
+  .text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: 40%;
+    font-size: 40px;
+    color: #ccc;
+  }
+
+  .canvas {
+    position: absolute;
+    left: 0%;
+    top: -700px;
+    width: 500px;
+    height: 500px;
+    outline: 1px solid #fff;
+  }
