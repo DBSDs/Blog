@@ -2,7 +2,7 @@
 sidebar_position: 2
 
 ---
-
+<!-- 
 # 开发Vscode语法插件
 
 ## 背景
@@ -74,4 +74,4 @@ vsce package
 ## 总结
 最后推广一下我的两个插件:
 * react-hooks(typescript环境下) 自动补全插件: [react-hooks-snippet/typescript](https://marketplace.visualstudio.com/items?itemName=op-chen.react-hooks-snippet)
-* js 函数快速生成注释模版插件(待完善中...): [auto comment](https://marketplace.visualstudio.com/items?itemName=op-chen.auto-comment)
+* js 函数快速生成注释模版插件(待完善中...): [auto comment](https://marketplace.visualstudio.com/items?itemName=op-chen.auto-comment) -->
